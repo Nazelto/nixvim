@@ -277,6 +277,14 @@
     }
     {
       mode = "n";
+      key = "<leader>ccs";
+      action = "<cmd>Telescope colorscheme<cr>";
+      options = {
+        desc = "change colorscheme";
+      };
+    }
+    {
+      mode = "n";
       key = "]d";
       action = "diagnostic_goto(true)";
       options = {

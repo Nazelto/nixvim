@@ -41,7 +41,7 @@
         jsonls = {
           enable = true;
         };
-        rust-analyzer = {
+        rust_analyzer = {
           enable = true;
         };
         helm_ls = {
