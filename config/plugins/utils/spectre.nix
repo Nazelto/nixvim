@@ -1,11 +1,15 @@
 {
   plugins.spectre = {
     enable = true;
-    keymaps = {
-      "<leader>sr" = {
-        action = "<cmd>lua require('spectre').toggle()<cr>";
-        dese = "search&repalce gui";
-      };
-    };
   };
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>sr";
+      action = "<cmd>lua require('spectre').toggle()<cr>";
+      options = {
+        desc = "search&replace";
+      };
+    }
+  ];
 }

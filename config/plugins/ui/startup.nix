@@ -67,7 +67,21 @@
             "sb"
           ]
         ];
-        highlight = "string";
+        highlight = "";
+        defaultColor = "";
+        oldfilesAmount = 0;
+      };
+      footer = {
+        type = "text";
+        oldfilesDirectory = false;
+        align = "center";
+        foldSection = false;
+        title = "Footer";
+        margin = 5;
+        content = [
+          "this is My NixVim"
+        ];
+        highlight = "Statement";
         defaultColor = "";
         oldfilesAmount = 0;
       };
@@ -77,12 +91,14 @@
       paddings = [
         1
         3
+        1
       ];
     };
 
     parts = [
       "header"
       "body"
+      "footer"
     ];
   };
 }
