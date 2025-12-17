@@ -67,6 +67,11 @@
             "edit ~/projects/personal/SecondBrain"
             "sb"
           ]
+          [
+            "󰚩 ClaudeCode"
+            "ClaudeCode"
+            "cC"
+          ]
         ];
         highlight = "";
         defaultColor = "";

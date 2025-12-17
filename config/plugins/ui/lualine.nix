@@ -67,17 +67,107 @@ _: {
             path = 1;
           }
           {
+            # __unkeyed-1.__raw = ''
+            #   function()
+            #     local icon = " "
+            #     local status = require("copilot.api").status.data
+            #     return icon .. (status.message or " ")
+            #   end,
+            #
+            #   cond = function()
+            #    local ok, clients = pcall(vim.lsp.get_clients, { name = "copilot", bufnr = 0 })
+            #    return ok and #clients > 0
+            #   end,
+            # '';
             __unkeyed-1.__raw = ''
               function()
                 local icon = " "
-                local status = require("copilot.api").status.data
-                return icon .. (status.message or " ")
+                
+                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                  local buf = vim.api.nvim_win_get_buf(win)
+                  local bufname = vim.api.nvim_buf_get_name(buf)
+                  
+                  if string.match(bufname:lower(), "claude") then
+                    -- 使用高亮组
+                    return string.format(
+                      "%%#DiagnosticInfo#%s%%#String#ClaudeCode using...%%#Normal#",
+                      icon
+                    )
+                  end
+                end
+                
+                return ""
               end,
 
               cond = function()
-               local ok, clients = pcall(vim.lsp.get_clients, { name = "copilot", bufnr = 0 })
-               return ok and #clients > 0
+                for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                  if vim.api.nvim_buf_is_valid(buf) then
+                    local bufname = vim.api.nvim_buf_get_name(buf)
+                    if string.match(bufname:lower(), "claude") then
+                      return true
+                    end
+                  end
+                end
+                return false
               end,
+            '';
+          }
+          # 第二个自定义函数 - 显示 LSP 客户端（带图标和颜色）
+          {
+            __unkeyed-1.__raw = ''
+              function()
+                local clients = vim.lsp.get_clients({ bufnr = 0 })
+                
+                -- 如果没有 LSP 客户端，不显示 图标
+                if next(clients) == nil then
+                  return ""
+                end
+                
+                -- LSP 图标映射表（仅图标）
+                local lsp_icons = {
+                  ["rust-analyzer"] = {
+                    icon = "🦀",
+                    hl = "%#DiagnosticOk#"
+                  },
+                  ["lua_ls"] = {
+                    icon = "🌙",
+                    hl = "%#DiagnosticInfo#"
+                  },
+                  ["pyright"] = {
+                    icon = "🐍",
+                    hl = "%#DiagnosticWarn#"
+                  },
+                  ["tsserver"] = {
+                    icon = "📜",
+                    hl = "%#DiagnosticHint#"
+                  },
+                  ["nil_ls"] = {
+                    icon = "❄️",
+                    hl = "%#DiagnosticInfo#"
+                  },
+                  ["nixd"] = {
+                    icon = "❄️",
+                    hl = "%#DiagnosticInfo#"
+                  },
+                }
+                
+                local parts = {}
+                for _, client in pairs(clients) do
+                    if client.name == "copilot" then
+                      goto continue
+                    end
+                  local config = lsp_icons[client.name]
+                  if config then
+                    table.insert(parts, config.hl .. config.icon .. "%#Normal#")
+                  else
+                    -- 未知 LSP 使用默认图标
+                    table.insert(parts, "%#Comment#⚙️%#Normal#")
+                  end
+                  ::continue::
+                end
+                
+                return table.concat(parts, " ")
+              end
             '';
           }
         ];
