@@ -31,8 +31,22 @@ _: {
       };
     }
     {
-      mode = "n";
+      mode = [
+        "n"
+        "t"
+      ];
       key = "<leader>tf";
+      action = "<cmd>ToggleTerm direction=float<cr>";
+      options = {
+        desc = "Toggle Floating Terminal Window";
+      };
+    }
+    {
+      mode = [
+        "n"
+        "t"
+      ];
+      key = "<C-t>";
       action = "<cmd>ToggleTerm direction=float<cr>";
       options = {
         desc = "Toggle Floating Terminal Window";

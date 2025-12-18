@@ -1,4 +1,5 @@
-_: {
+{ config, ... }:
+{
   plugins.lualine = {
     enable = true;
     settings = {
@@ -179,6 +180,26 @@ _: {
         lualine_z = [
           {
             __unkeyed-1 = "location";
+          }
+          {
+            __unkeyed-1.__raw = ''
+              function()
+                local lzn = require("lz.n")
+                
+                -- 尝试使用 lookup 方法
+                if type(lzn.lookup) == "function" then
+                  -- 查找一个已知的插件（替换为你实际使用的插件名）
+                  local plugin = lzn.lookup("telescope.nvim")
+                  if plugin then
+                    return "󰒲 Found: telescope"
+                  else
+                    return "󰒲 lookup works but no plugin"
+                  end
+                end
+                
+                return "󰒲 No lookup"
+              end
+            '';
           }
         ];
       };

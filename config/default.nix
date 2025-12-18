@@ -54,5 +54,7 @@ _: {
     ./plugins/utils/toggleterm.nix
     ./plugins/utils/web-devicons.nix
     ./plugins/utils/spectre.nix
+    ./plugins/utils/lz-n.nix
+    ./plugins/utils/action-preview.nix
   ];
 }

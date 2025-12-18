@@ -13,6 +13,17 @@
     lsp = {
       enable = true;
       inlayHints = true;
+      lazyLoad = {
+        enable = true;
+        settings = {
+          ft = [
+            "rust"
+            "lua"
+            "nix"
+            "python"
+          ];
+        };
+      };
       servers = {
         html = {
           enable = true;
@@ -43,6 +54,16 @@
         };
         rust_analyzer = {
           enable = true;
+          installCargo = false;
+          installRustc = false;
+          settings = {
+            inlayHints = {
+              enable = true;
+            };
+            check = {
+              command = "clippy";
+            };
+          };
         };
         helm_ls = {
           enable = true;
@@ -84,6 +105,10 @@
       keymaps = {
         silent = true;
         lspBuf = {
+          # "<leader>ca" = {
+          #   action = "code_action";
+          #   desc = "codeAction";
+          # };
           gd = {
             action = "definition";
             desc = "Goto Definition";
@@ -107,10 +132,6 @@
           K = {
             action = "hover";
             desc = "Hover";
-          };
-          "<leader>cw" = {
-            action = "workspace_symbol";
-            desc = "Workspace Symbol";
           };
           "<leader>cr" = {
             action = "rename";
@@ -161,4 +182,12 @@
       border = _border
     }
   '';
+  # keymaps = [
+  #   #Code Actions
+  #   {
+  #     mode = "n";
+  #     key = "<leader>ca";
+  #     action = "<CMD>lua vim.lsp.buf.code_action()<CR>";
+  #   }
+  # ];
 }

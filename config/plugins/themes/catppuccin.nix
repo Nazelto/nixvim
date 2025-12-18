@@ -7,7 +7,7 @@
           light = "macchiato";
           dark = "frappe";
         };
-        custom_highlights = ''
+        custom_highlights.__raw = ''
           function(highlights)
             return {
             CursorLineNr = { fg = highlights.peach, style = {} },

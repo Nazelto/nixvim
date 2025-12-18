@@ -9,6 +9,52 @@
         enable = true;
       };
     };
+    lazyLoad = {
+      enable = true;
+      settings = {
+        cmd = [
+          "Telescope"
+        ];
+        after.__raw = ''
+          function()
+            require("telescope").setup()
+          end
+        '';
+        keys = [
+          {
+            __unkeyed-1 = "<leader>fb";
+            __unkeyed-2 = "<CMD>Telescope buffers<CR>";
+            desc = "Telescope buffers";
+          }
+          {
+            __unkeyed-1 = "<leader>ff";
+            __unkeyed-2.__raw = ''
+              function()
+                require("telescope.builtin").find_files()
+              end
+            '';
+          }
+          {
+            __unkeyed-1 = "<leader>fr";
+            __unkeyed-2.__raw = ''
+              function()
+                require("telescope.builtin").live_grep()
+              end
+            '';
+            desc = "Telescope live_grep";
+          }
+          {
+            __unkeyed-1 = "<leader>/";
+            __unkeyed-2.__raw = ''
+              function()
+                require("telescope.builtin").live_grep()
+              end
+            '';
+            desc = "Telescope live_grep";
+          }
+        ];
+      };
+    };
     settings = {
       defaults = {
         layout_config = {
@@ -20,16 +66,18 @@
       };
     };
     keymaps = {
+      "<leader>ws" = {
+        action = "lsp_workspace_symbols";
+        options.desc = "Workspace Symbols";
+      };
+      "<leader>ds" = {
+        action = "lsp_dynamic_workspace_symbols";
+        options.desc = "Dynamic Workspace Symbols";
+      };
       "<leader><space>" = {
         action = "find_files";
         options = {
           desc = "Find project files";
-        };
-      };
-      "<leader>/" = {
-        action = "live_grep";
-        options = {
-          desc = "Grep (root dir)";
         };
       };
       "<leader>:" = {
@@ -48,12 +96,6 @@
         action = "find_files";
         options = {
           desc = "Find project files";
-        };
-      };
-      "<leader>fr" = {
-        action = "live_grep";
-        options = {
-          desc = "Find text";
         };
       };
       "<leader>fR" = {
