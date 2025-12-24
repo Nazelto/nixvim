@@ -21,10 +21,20 @@
             "lua"
             "nix"
             "python"
+            "haskell"
           ];
         };
       };
       servers = {
+        hls = {
+          enable = true;
+          package = null;
+          installGhc = false;
+          cmd = [
+            "haskell-language-server-wrapper"
+            "--lsp"
+          ];
+        };
         html = {
           enable = true;
         };
@@ -34,6 +44,20 @@
         nil_ls = {
           enable = true;
         };
+        # nixd = {
+        #   enable = true;
+        #   settings = {
+        #     nixpkgs = {
+        #       expr = "import (builtins.getFlake (toString ./.)).inputs.nixpkgs {}";
+        #     };
+        #     eval = {
+        #       target = {
+        #         # installable = "(builtins.getFlake (toString ./.)).inputs";
+        #         installable = "import ./.nixd-env.nix";
+        #       };
+        #     };
+        #   };
+        # };
         ts_ls = {
           enable = true;
         };

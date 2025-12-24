@@ -56,5 +56,7 @@ _: {
     ./plugins/utils/spectre.nix
     ./plugins/utils/lz-n.nix
     ./plugins/utils/action-preview.nix
+    ./plugins/utils/dressing.nix
+    ./plugins/utils/aerial.nix
   ];
 }
