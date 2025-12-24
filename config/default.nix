@@ -59,4 +59,35 @@ _: {
     ./plugins/utils/dressing.nix
     ./plugins/utils/aerial.nix
   ];
+  extraConfigLua = ''
+    if vim.g.neovide then
+        -- 透明度
+        vim.g.neovide_opacity = 0.7
+        vim.g.neovide_normal_opacity = 0.75
+        -- vim.g.neovide_transparency = 0.7
+        
+        -- 字体
+        vim.o.guifont = "CaskaydiaCove Nerd Font Mono:h13"
+      
+        vim.g.neovide_floating_shadow = true
+        vim.g.neovide_floating_z_height = 10
+        vim.g.neovide_light_angle_degrees = 45
+        vim.g.neovide_light_radius = 5
+        vim.g.neovide_floating_blur_amount_x = 2.0
+        vim.g.neovide_floating_blur_amount_y = 2.0
+        --
+        -- -- 光标特效
+        -- vim.g.neovide_cursor_vfx_mode = "railgun"
+        -- vim.g.neovide_cursor_animation_length = 0.1
+        --
+        -- -- 缩放快捷键
+        -- vim.g.neovide_scale_factor = 1.0
+        -- vim.keymap.set("n", "<C-=>", function()
+        --     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * 1.1
+        -- end)
+        -- vim.keymap.set("n", "<C-->", function()
+        --     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor / 1.1
+        -- end)
+    end
+  '';
 }
