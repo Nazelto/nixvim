@@ -52,5 +52,16 @@ _: {
         desc = "Toggle Floating Terminal Window";
       };
     }
+    {
+      mode = [
+        "n"
+        "t"
+      ];
+      key = "<C-S-t>";
+      action = "<cmd>ToggleTerm direction=float<cr>";
+      options = {
+        desc = "Toggle Floating Terminal Window";
+      };
+    }
   ];
 }
