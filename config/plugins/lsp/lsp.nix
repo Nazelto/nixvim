@@ -34,9 +34,10 @@
           cmd = [
             "clangd"
             "--background-index"
-            "--clangd-tidy"
+            "--clang-tidy"
             "--header-insertion=iwyu"
-            "--compile-commands=./build"
+            "--compile-commands-dir=build"
+            "--completion-style=detailed"
             "--query-driver=/nix/store/**/bin/*"
           ];
         };
