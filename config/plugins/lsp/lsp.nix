@@ -22,10 +22,24 @@
             "nix"
             "python"
             "haskell"
+            "c++"
+            "c"
           ];
         };
       };
       servers = {
+        # c/cpp
+        clangd = {
+          enable = true;
+          cmd = [
+            "clangd"
+            "--background-index"
+            "--clangd-tidy"
+            "--header-insertion=iwyu"
+            "--compile-commands=./build"
+            "--query-driver=/nix/store/**/bin/*"
+          ];
+        };
         hls = {
           enable = true;
           package = null;
