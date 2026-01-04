@@ -57,7 +57,8 @@
 
       # Disable folding by default
       foldenable = false;
-
+      # readonly Disable
+      readonly = false;
       # Wrap long lines at a character in 'breakat'
       linebreak = true;
 
