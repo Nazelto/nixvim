@@ -161,7 +161,7 @@
             command = "${lib.getExe pkgs.bicep}";
           };
           clang-format = {
-            command = "${pkgs.clang-tools}/bin/clang-format";
+            command = "clang-format";
           };
           #yamlfmt = {
           #  command = "${lib.getExe pkgs.yamlfmt}";
