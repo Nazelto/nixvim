@@ -39,8 +39,6 @@
             "--compile-commands-dir=build"
             "--completion-style=detailed"
             "--query-driver=/nix/store/**/bin/*"
-            "-Wall"
-            "-Wextra"
           ];
         };
         hls = {
