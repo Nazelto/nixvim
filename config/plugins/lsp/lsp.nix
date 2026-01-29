@@ -96,7 +96,15 @@
             usePlaceholders = true; # 不全占位符
             completeUnimported = true; # 未导入包补全
             experimentalPostfixCompletions = true; # 后缀补全
-            hints = true; # inlay-hint
+            hints = {
+              assignVariableTypes = true;
+              compositeLiteralFields = true;
+              compositeLiteralTypes = true;
+              constantValues = true;
+              functionTypeParameters = true;
+              parameterNames = true;
+              rangeVariableTypes = true;
+            }; # inlay-hint
 
           };
         };
