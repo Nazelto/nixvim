@@ -78,6 +78,8 @@
         '';
         notify_on_error = true;
         formatters_by_ft = {
+          # 这里配置语言的formatter
+          go = [ "gofumpt" ];
           cpp = [ "clang-format" ];
           html = {
             __unkeyed-1 = "prettierd";

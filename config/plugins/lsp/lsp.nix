@@ -84,6 +84,21 @@
         };
         gopls = {
           enable = true;
+          settings = {
+            analyses = {
+              unusedparams = true; # 检查未使用的函数参数
+              shadow = true; # 检查变量遮蔽
+              unusedwrite = true; # 检查无效写入
+              useany = true; # 建议用any代替interface {}
+            };
+            staticcheck = true; # 额外静态检查
+            gofumpt = true; # 格式化风格
+            usePlaceholders = true; # 不全占位符
+            completeUnimported = true; # 未导入包补全
+            experimentalPostfixCompletions = true; # 后缀补全
+            hints = true; # inlay-hint
+
+          };
         };
         terraformls = {
           enable = true;
