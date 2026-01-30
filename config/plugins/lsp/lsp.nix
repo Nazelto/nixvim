@@ -81,6 +81,39 @@
         };
         pyright = {
           enable = true;
+          settings = {
+            python = {
+              analysis = {
+                # 类型检查模式 "off" "basic" "standard" "strict"
+                typeCheckMode = "standard";
+                # 自动搜索路径
+                useSearchPaths = true;
+                # 使用库代码进行类型推断
+                useLibraryCodeForTypes = true;
+                # 诊断模式
+                diagnosticMode = "openFilesOnly"; # 或 "workspace"
+                # 自动导入补全
+                autoImportCompletions = true;
+                # 诊断严重性覆盖
+                diagnosticSeverityOverrides = {
+                  reportMissingImports = "error";
+                  reportMissingTypeStubs = "warning";
+                  reportUnusedImport = "warning";
+                  reportUnusedClass = "warning";
+                  reportUnusedFunction = "warning";
+                  reportUnusedVariable = "warning";
+                  reportDuplicateImport = "warning";
+                };
+              };
+            };
+          };
+        };
+        ruff = {
+          enable = true;
+          settings = {
+            organizeImports = true;
+            fixAll = true;
+          };
         };
         gopls = {
           enable = true;
