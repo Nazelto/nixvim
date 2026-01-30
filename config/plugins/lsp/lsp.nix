@@ -79,7 +79,7 @@
         marksman = {
           enable = true;
         };
-        pyright = {
+        basedpyright = {
           enable = true;
           settings = {
             python = {
