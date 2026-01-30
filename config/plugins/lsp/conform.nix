@@ -104,6 +104,7 @@
           python = [
             "black"
             "isort"
+            "ruff_format"
           ];
           lua = [ "stylua" ];
           nix = [ "nixfmt-rfc-style" ];
@@ -129,6 +130,14 @@
         };
 
         formatters = {
+          # go formatter
+          gofumpt = {
+            command = "${lib.getExe pkgs.gofumpt}";
+          };
+          # python formatter
+          ruff_format = {
+            command = "${lib.getExe pkgs.ruff}";
+          };
           black = {
             command = "${lib.getExe pkgs.black}";
           };
