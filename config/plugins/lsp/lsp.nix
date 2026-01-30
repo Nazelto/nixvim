@@ -104,6 +104,13 @@
                   reportUnusedVariable = "warning";
                   reportDuplicateImport = "warning";
                 };
+                # Inlay Hints 配置
+                inlayHints = {
+                  variableTypes = true; # 变量类型提示
+                  functionReturnTypes = true; # 函数返回类型提示
+                  callArgumentNames = true; # 调用时显示参数名
+                  pytestParameters = true; # pytest 参数提示
+                };
               };
             };
           };
