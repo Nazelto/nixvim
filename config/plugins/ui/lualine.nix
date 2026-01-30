@@ -134,7 +134,7 @@
                     icon = "🌙",
                     hl = "%#DiagnosticInfo#"
                   },
-                  ["pyright"] = {
+                  ["pyright","basedpyright"] = {
                     icon = "🐍",
                     hl = "%#DiagnosticWarn#"
                   },
