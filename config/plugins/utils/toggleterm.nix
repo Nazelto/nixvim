@@ -15,7 +15,10 @@ _: {
       };
     }
     {
-      mode = "n";
+      mode = [
+        "n"
+        "t"
+      ];
       key = "<leader>tv";
       action = "<cmd>ToggleTerm direction=vertical<cr>";
       options = {

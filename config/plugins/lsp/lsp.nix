@@ -180,6 +180,9 @@
             };
           };
         };
+        tombi = {
+          enable = true;
+        };
         yamlls = {
           enable = true;
           extraOptions = {
